@@ -208,25 +208,25 @@
                     type: "GET",
                     success: function(result) {
                             var temp = [];
-                            ///var temp2 = [];
+                            var vid = [];
 
                             /*Armado del arreglo que contiene la información de los vehículos. (NAME, ID, IMEI, MAKE, MODEL)*/
                             for(var i=0; i<result.data.length; i++){
                                 var item = {name:result.data[i].name, id:result.data[i].id, imei: result.data[i].device, make: result.data[i].info.make, model: result.data[i].info.model};
                                 temp.push(item);
-                                //temp2.push(result.data[i].id);
+                                vid.push(result.data[i].id);
                             }
 
                             this.setState({items: temp});
                             console.log(result);
                             
                              var itemsJ = JSON.stringify(this.state.items);
-                            console.log(itemsJ);
+                             var vidJ = JSON.stringify(vid);
 
                              $.ajax({
                                 type: "POST",
                                 url: "app/model/save_db.php",
-                                data: {"vehiculos": itemsJ },
+                                data: {"vid": vidJ },
                                 success: function(result){
 
                                     console.log("Paquete Enviado");
@@ -259,7 +259,6 @@
                             console.log(result);
                             
                             var usersDataJ = JSON.stringify(this.state.usersData);
-                            console.log(usersDataJ);
                             
                             $.ajax({
                                 type: "POST",
