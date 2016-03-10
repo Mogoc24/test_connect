@@ -223,7 +223,7 @@
                              var itemsJ = JSON.stringify(this.state.items);
                              var vidJ = JSON.stringify(vid);
 
-                             $.ajax({
+                             /*$.ajax({
                                 type: "POST",
                                 url: "app/model/save_db.php",
                                 data: {"vid": vidJ },
@@ -232,7 +232,7 @@
                                     console.log("Paquete Enviado");
 
                                 }
-                            });
+                            });*/
 
                     }.bind(this) //set context
                 });
@@ -339,6 +339,17 @@
                         /////^^^^^^En construcción, para poder obtener una direccion a apartir de coordenadas////////////////////
                         
                     }.bind(this)
+                });
+                
+                $.ajax({
+                    type: "POST",
+                    url: "app/model/save_db.php",
+                    data: {"vid": vehiculo.id },
+                    success: function(result){
+
+                        console.log("Paquete Enviado");
+
+                    }
                 });
             },
 
